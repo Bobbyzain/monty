@@ -20,7 +20,7 @@ void _adds(stack_t **headL, unsigned int line_num)
 	if (m < 2)
 	{
 		dprintf(2, "L%u: can't add, stack too short\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
@@ -40,7 +40,8 @@ void _nops(stack_t **headL, unsigned int line_num)
 	(void)line_num;
 }
 /**
- * _subs - Subtracts 2nd value from the top of stack_t linked list by top value.
+ * _subs - Subtracts 2nd value from the top
+ * of stack_t linked list by top value.
  * @head: the head node
  * @line_num: the line number
  * Description: The result is stored in the second value node
@@ -60,7 +61,7 @@ void _subs(stack_t **head, unsigned int line_num)
 	if (m < 2)
 	{
 		dprintf(2, "L%u: can't sub, stack too short\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
@@ -89,14 +90,14 @@ void _divs(stack_t **headL, unsigned int line_num)
 	if (m < 2)
 	{
 		dprintf(2, "L%u: can't div, stack too short\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
 	if ((*headL)->n == 0)
 	{
 		dprintf(2, "L%u: division by zero\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
@@ -126,7 +127,7 @@ void _mul(stack_t **head, unsigned int line_num)
 	if (m < 2)
 	{
 		dprintf(2, "L%u: can't mul, stack too short\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 

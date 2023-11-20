@@ -26,7 +26,7 @@ void (*get_opcodesx(char *opcd))(stack_t **stack, unsigned int line_number)
 		{"pchar", _pchars},
 		{"pstr", _pstrs},
 		{"rotl", _rots_L},
-		{"rotr", _rot_rv},
+		{"rotr", _rots_rv},
 		{NULL, NULL}
 	};
 	int i;

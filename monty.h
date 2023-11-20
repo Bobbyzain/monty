@@ -62,19 +62,28 @@ typedef struct vari_s
 	int lifi;
 }  vari_t;
 extern vari_t vari;
+
 /**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
+ * struct globally - global structure to use in the functions
+ * @lifo: is stack or queue
+ * @cont: current line
+ * @arg: second parameter inside the current line
+ * @head: doubly linked list
+ * @fd: file descriptor
+ * @buffer: input text
  *
- * Description: opcode and its function
+ * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO Holberton project
  */
-typedef struct instruction_s
+typedef struct globally
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
+	int lifo;
+	unsigned int cont;
+	char  *arg;
+	stack_t *head;
+	FILE *fd;
+	char *buffer;
+} globally_t;
 
 extern globally_t glo_var;
 
@@ -123,4 +132,6 @@ void free_a_listint(stack_t *headL);
 stack_t *add_a_nodeint(stack_t **headL, const int n);
 stack_t *add_a_nodeint_end(stack_t **headL, const int n);
 
+void (*get_opcodesx(char *opcd))(stack_t **stack, unsigned int line_number);
+void (*f)(stack_t **stack, unsigned int line_number);
 #endif

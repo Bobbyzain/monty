@@ -1,6 +1,4 @@
 #include "monty.h"
-void (*f)(stack_t **stack, unsigned int line_number);
-globally_t glo_var;
 /**
  * free_glo_var - frees the global variables
  *
@@ -8,7 +6,7 @@ globally_t glo_var;
  */
 void free_glo_var(void)
 {
-	free_dlistint(glo_var.head);
+	free_a_listint(glo_var.head);
 	free(glo_var.buffer);
 	fclose(glo_var.fd);
 }
@@ -77,10 +75,10 @@ int main(int argc, char *argv[])
 	nlines = getline(&glo_var.buffer, &size, fd);
 	while (nlines != -1)
 	{
-		lines[0] = _strtoky(glo_var.buffer, " \t\n");
+		lines[0] = _strtoker(glo_var.buffer, " \t\n");
 		if (lines[0] && lines[0][0] != '#')
 		{
-			f = get_opcodes(lines[0]);
+			f = get_opcodesx(lines[0]);
 			if (!f)
 			{
 				dprintf(2, "L%u: ", glo_var.cont);
@@ -88,7 +86,7 @@ int main(int argc, char *argv[])
 				free_glo_var();
 				exit(EXIT_FAILURE);
 			}
-			glo_var.arg = _strtoky(NULL, " \t\n");
+			glo_var.arg = _strtoker(NULL, " \t\n");
 			f(&glo_var.head, glo_var.cont);
 		}
 		nlines = getline(&glo_var.buffer, &size, fd);

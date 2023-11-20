@@ -10,7 +10,7 @@ void _queuer(stack_t **headL, unsigned int line_num)
 	(void)headL;
 	(void)line_num;
 
-	vglo.lifo = 0;
+	glo_var.lifo = 0;
 }
 
 /**
@@ -23,5 +23,5 @@ void _stackr(stack_t **headL, unsigned int line_num)
 	(void)headL;
 	(void)line_num;
 
-	vglo.lifo = 1;
+	glo_var.lifo = 1;
 }

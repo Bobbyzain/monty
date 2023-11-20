@@ -10,31 +10,31 @@ void _push_L(stack_t **headL, unsigned int line_num)
 {
 	int n, y;
 
-	if (!vglo.arg)
+	if (!glo_var.arg)
 	{
 		dprintf(2, "L%u: ", line_num);
 		dprintf(2, "usage: push integer\n");
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
-	for (y = 0; vglo.arg[y] != '\0'; y++)
+	for (y = 0; glo_var.arg[y] != '\0'; y++)
 	{
-		if (!isdigit(vglo.arg[y]) && vglo.arg[y] != '-')
+		if (!isdigit(glo_var.arg[y]) && glo_var.arg[y] != '-')
 		{
 			dprintf(2, "L%u: ", line_num);
 			dprintf(2, "usage: push integer\n");
-			free_vglo();
+			free_glo_var();
 			exit(EXIT_FAILURE);
 		}
 	}
 
-	n = atoi(vglo.arg);
+	n = atoi(glo_var.arg);
 
-	if (vglo.lifo == 1)
-		add_dnodeint(headL, n);
+	if (glo_var.lifo == 1)
+		add_a_nodeint(headL, n);
 	else
-		add_dnodeint_end(headL, n);
+		add_a_nodeint_end(headL, n);
 }
 
 /**
@@ -74,7 +74,7 @@ void _pint_L(stack_t **headL, unsigned int line_num)
 	{
 		dprintf(2, "L%u: ", line_num);
 		dprintf(2, "can't pint, stack empty\n");
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
@@ -95,7 +95,7 @@ void _pops(stack_t **headL, unsigned int line_num)
 	if (headL == NULL || *headL == NULL)
 	{
 		dprintf(2, "L%u: can't pop an empty stack\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 	store = *headL;
@@ -124,7 +124,7 @@ void _swap_L(stack_t **headL, unsigned int line_num)
 	if (m < 2)
 	{
 		dprintf(2, "L%u: can't swap, stack too short\n", line_num);
-		free_vglo();
+		free_glo_var();
 		exit(EXIT_FAILURE);
 	}
 
