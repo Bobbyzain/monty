@@ -1,5 +1,6 @@
 #include "monty.h"
 void (*get_opcodesx(char *opcd))(stack_t **stack, unsigned int line_number);
+globally_t glo_var;
 /**
  * free_glo_var - frees the global variables
  *
